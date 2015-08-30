@@ -1,0 +1,25 @@
+{>"layouts/master" /}
+{<title}
+    Team Details
+{/title}
+
+{<body}
+    <h2>Team Details</h2>
+    <main role="main">
+        <div class="mb2">
+            <fieldset>
+                <legend>{teams.teamname}</legend>
+<ul>
+<li> teamno: {teams.teamno} </li>
+<li> member1: {teams.member1}  </li>
+<li> member2: {teams.member2}  </li>
+<li> member3: {teams.member3}  </li>
+
+<li> id: {teams._id}  </li>
+</ul>
+
+  </fieldset>
+        </div>
+            </main>
+
+{/body}

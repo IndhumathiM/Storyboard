@@ -1,0 +1,56 @@
+{>"layouts/master" /}
+{<title}
+    Project Details
+{/title}
+
+{<body}
+    <h2>Project Details</h2>
+    <main role="main">
+        <div class="mb2">
+            <fieldset>
+                <legend>{projects.projectname}</legend>
+
+<ul>
+<li> projectno: {projects.projectno} </li>
+<li> date1: {projects.date1}  </li>
+<li> date2: {projects.date2}  </li>
+<li> date3: {projects.date3}  </li>
+
+<li> id: {projects._id}  </li>
+  <li>  <a href='/{projects._id}/stories'>Stories</a></li>
+
+</ul>
+
+  </fieldset>
+        </div>
+            </main>
+
+             <fieldset>
+
+       <form method="POST" action="/{projects._id}/story/search/name">
+
+                     <label for="name">StoryName: </label>
+                      <input name="storyname" placeholder="Story Name"><br>
+                      <input type="submit" value="Search">
+                      <input type="hidden" name="_csrf" value="{_csrf}">
+
+                       </form>
+                       </fieldset>
+                     </div>
+
+              <fieldset>
+
+     <form method="POST" action="/{projects._id}/story/search/date">
+
+                     <label for="name">Search story by releasedate: </label>
+                      <input type="date" name="releasedate" placeholder="Release date"><br>
+                      <input type="submit" value="Search">
+                      <input type="hidden" name="_csrf" value="{_csrf}">
+
+                      </form>
+                      </fieldset>
+                  </div>
+
+
+
+{/body}

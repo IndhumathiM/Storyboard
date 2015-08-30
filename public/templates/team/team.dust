@@ -1,0 +1,57 @@
+{>"layouts/master" /}
+{<title}
+    Team Editor
+{/title}
+
+{<body}
+    <h2>Team Editor</h2>
+    <main role="main">
+        <div class="mb2">
+            <fieldset>
+                <legend>Add a new Team</legend>
+                <form method="POST" action="/team">
+                    <input name="teamname" placeholder="Team Name"><br>
+                    <input name="teamno" placeholder="Team No"><br>
+                    <input name="member1" placeholder="Member1"><br>
+                    <input name="member2" placeholder="Member2"><br>
+                    <input name="member3" placeholder="Member3"><br>
+
+
+                    <input type="hidden" name="_csrf" value="{_csrf}">
+                    <input type="submit" value="Save">
+                </form>
+            </fieldset>
+        </div>
+
+        <div class="products">
+            {?teams}
+                <fieldset>
+                    <legend>Team List</legend>
+                    <ul class="nm-np inline">
+                        {#teams}
+                            <li>
+                                <form method="POST" action="/team">
+                                    <input type="hidden" name="item_id" value="{.id}">
+
+                                    <h3 class="nm-np"><a href='/team/{.id}'>{.teamname}</h3>
+
+
+                                    <input type="submit" value="Delete">
+                                    <!--If we don't at the Cross-Site Request Forgey token, this POST will be rejected-->
+                                    <input type="hidden" name="_csrf" value="{_csrf}">
+                                    <input type="hidden" name="_method" value="DELETE">
+
+
+                          <h3 class="nm-np"><a href='/team/{.id}/edit'>Edit</a></h3>
+
+                                </form>
+                            </li>
+                        {/teams}
+                    </ul>
+                </fieldset>
+            {:else}
+                There are no stories :(
+            {/teams}
+        </div>
+    </main>
+{/body}

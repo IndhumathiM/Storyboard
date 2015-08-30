@@ -1,0 +1,30 @@
+ {>"layouts/master" /}
+ {<title}
+     Project Editor
+ {/title}
+
+ {<body}
+     <h2>Project Editor</h2>
+     <main role="main">
+         <div class="mb2">
+             <fieldset>
+                 <legend>Edit Project Details</legend>
+
+       <form method="POST" action="/project/{projects._id}">
+       <input type="hidden" name="_method" value="PUT">
+
+       <input name="projectname" placeholder="Project Name", value="{projects.projectname}"><br>
+       <input name="projectno" placeholder="ProjectNo", value="{projects.projectno}"><br>
+       <input type="date" name="date1" placeholder="Date1", value="{projects.date1}"><br>
+       <input type="date" name="date2" placeholder="Date2", value="{projects.date2}"><br>
+       <input type="date" name="date3" placeholder="Date3", value="{projects.date3}"><br>
+
+         <input type="submit" value="Update">
+         <input type="hidden" name="_csrf" value="{_csrf}">
+
+        </form>
+ </fieldset>
+        </div>
+            </main>
+
+{/body}

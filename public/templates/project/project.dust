@@ -1,0 +1,69 @@
+{>"layouts/master" /}
+{<title}
+    Project Editor
+{/title}
+
+{<body}
+    <h2>Project Editor</h2>
+    <main role="main">
+        <div class="mb2">
+            <fieldset>
+                <legend>Add a new Project</legend>
+                <form method="POST" action="/project">
+
+                    <label for="projectname">ProjectName: </label>
+                    <input name="projectname" placeholder="Project Name"><br>
+
+                    <label for="projectno">ProjectNo: </label>
+                    <input name="projectno" placeholder="Project No"><br>
+
+                    <label for="release1">Release1: </label>
+                    <input type="date" name="date1" placeholder="Release1"><br>
+
+                       <label for="release2">Release2: </label>
+                    <input type="date" name="date2" placeholder="Release2"><br>
+
+                     <label for="release3">Release3: </label>
+                    <input type="date" name="date3" placeholder="Release3"><br>
+
+                    <input type="hidden" name="_csrf" value="{_csrf}">
+                    <input type="submit" value="Save">
+                </form>
+            </fieldset>
+        </div>
+
+        <div class="products">
+            {?projects}
+                <fieldset>
+                    <legend>Project List</legend>
+                    <ul class="nm-np inline">
+                        {#projects}
+                            <li>
+                                <form method="POST" action="/project">
+                                    <input type="hidden" name="item_id" value="{.id}">
+
+                                    <h3 class="nm-np"><a href='/project/{.id}'>{.projectname}</h3>
+
+
+
+                                    <input type="submit" value="Delete">
+                                    <!--If we don't at the Cross-Site Request Forgey token, this POST will be rejected-->
+                                    <input type="hidden" name="_csrf" value="{_csrf}">
+                                    <input type="hidden" name="_method" value="DELETE">
+
+                                 <h3 class="nm-np"><a href='/project/{.id}/edit'>Edit</a></h3>
+
+                                <h3 class="nm-np"><a href='{.id}/story'>Add Stories</a></h3>
+
+
+                                </form>
+                            </li>
+                        {/projects}
+                    </ul>
+                </fieldset>
+            {:else}
+                There are no projects :(
+            {/projects}
+        </div>
+    </main>
+{/body}

@@ -1,0 +1,62 @@
+{>"layouts/master" /}
+{<title}
+    Story Editor
+{/title}
+
+{<body}
+    <h2>Story Editor</h2>
+    <main role="main">
+        <div class="mb2">
+            <fieldset>
+                <legend>Add a new Story</legend>
+
+       <form method="POST" action="/story/{projects._id}">
+       <input type="hidden" name="_method" value="PUT">
+                    <input name="name" placeholder="Story Name"><br>
+                    <input name="creator" placeholder="Creator"><br>
+                    <input type="date" name="date" placeholder="Creation Date"><br>
+                    <input name="desc" placeholder="Description"><br>
+
+                    <input type="hidden" name="_csrf" value="{_csrf}">
+                    <input type="submit" value="Save">
+                </form>
+            </fieldset>
+        </div>
+
+        <div class="products">
+            {?projects}
+                <fieldset>
+                    <legend>Story List</legend>
+                    <ul class="nm-np inline">
+                        {#projects.story}
+
+                            <li>
+                                <form method="POST" action="/story/delete/{projects.id}/{name}">
+
+                                           <input type="hidden" name="_method" value="POST">
+
+                                    <h3 class="nm-np">{name}</h3>
+                                     <h3 class="nm-np">{creator}</h3>
+                                     <h3 class="nm-np">{date}</h3>
+                                       <h3 class="nm-np">{desc}</h3>
+
+
+
+                                    <input type="submit" value="Delete">
+                                    <!--If we don't at the Cross-Site Request Forgey token, this POST will be rejected-->
+                                    <input type="hidden" name="_csrf" value="{_csrf}">
+                                    <input type="hidden" name="_method" value="DELETE">
+
+                                    <h3 class="nm-np"><a href='/story/{projects._id}/edit/{name}'>Edit</a></h3>
+
+                                </form>
+                            </li>
+                        {/projects.story}
+                    </ul>
+                </fieldset>
+            {:else}
+                There are no stories :(
+            {/projects}
+        </div>
+    </main>
+{/body}

@@ -1,0 +1,30 @@
+ {>"layouts/master" /}
+ {<title}
+     Team Editor
+ {/title}
+
+ {<body}
+     <h2>Team Editor</h2>
+     <main role="main">
+         <div class="mb2">
+             <fieldset>
+                 <legend>Edit Team Details</legend>
+
+       <form method="POST" action="/team/{teams._id}">
+       <input type="hidden" name="_method" value="PUT">
+
+       <input name="teamname" placeholder="Team Name", value="{teams.teamname}"><br>
+       <input name="teamno" placeholder="TeamNo", value="{teams.teamno}"><br>
+       <input type="member1" name="member1" placeholder="member1", value="{teams.member1}"><br>
+       <input type="member2" name="member2" placeholder="member2", value="{teams.member2}"><br>
+       <input type="member3" name="member3" placeholder="member3", value="{teams.member3}"><br>
+
+         <input type="submit" value="Update">
+         <input type="hidden" name="_csrf" value="{_csrf}">
+
+        </form>
+ </fieldset>
+        </div>
+            </main>
+
+{/body}
