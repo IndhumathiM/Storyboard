@@ -8,13 +8,16 @@
     <main role="main">
         <div class="mb2">
             <fieldset>
-                <legend>{projects.projectname}</legend>
+                <legend>{projects.projectName}</legend>
 
 <ul>
-<li> projectno: {projects.projectno} </li>
-<li> date1: {projects.date1}  </li>
-<li> date2: {projects.date2}  </li>
-<li> date3: {projects.date3}  </li>
+<li> ProjectNo: {projects.projectNo} </li>
+<li> StartDate: {projects.startDate}  </li>
+<li> EndDate: {projects.endDate}  </li>
+<li> Releases: {projects.releases}  </li>
+<li> Sprint Duration: {projects.sprintDuration}  </li>
+<li> Number of Sprints: {projects.sprintCount}  </li>
+
 
 <li> id: {projects._id}  </li>
   <li>  <a href='/{projects._id}/stories'>Stories</a></li>
@@ -30,7 +33,7 @@
        <form method="POST" action="/{projects._id}/story/search/name">
 
                      <label for="name">StoryName: </label>
-                      <input name="storyname" placeholder="Story Name"><br>
+                      <input name="storyName" placeholder="Story Name"><br>
                       <input type="submit" value="Search">
                       <input type="hidden" name="_csrf" value="{_csrf}">
 
@@ -42,8 +45,8 @@
 
      <form method="POST" action="/{projects._id}/story/search/date">
 
-                     <label for="name">Search story by releasedate: </label>
-                      <input type="date" name="releasedate" placeholder="Release date"><br>
+                     <label for="name">Search story by releaseDate: </label>
+                      <input type="date" name="releaseDate" placeholder="Release Date"><br>
                       <input type="submit" value="Search">
                       <input type="hidden" name="_csrf" value="{_csrf}">
 

@@ -11,7 +11,7 @@
 
             <fieldset>
 
-                <legend>{projects.projectname}</legend>
+                <legend>{projects.projectName}</legend>
 
       {#projects.story}
 
@@ -20,6 +20,10 @@
 <li> creator: {creator}  </li>
 <li> date: {date}  </li>
 <li> desc: {desc}  </li>
+<li> sprintNo: {sprintNo}  </li>
+<li> sprintStartDate: {sprintStartDate}  </li>
+<li> sprintEndDate: {sprintEndDate}  </li>
+
 </ul>
   {/projects.story}
 

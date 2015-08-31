@@ -13,11 +13,13 @@
        <form method="POST" action="/project/{projects._id}">
        <input type="hidden" name="_method" value="PUT">
 
-       <input name="projectname" placeholder="Project Name", value="{projects.projectname}"><br>
-       <input name="projectno" placeholder="ProjectNo", value="{projects.projectno}"><br>
-       <input type="date" name="date1" placeholder="Date1", value="{projects.date1}"><br>
-       <input type="date" name="date2" placeholder="Date2", value="{projects.date2}"><br>
-       <input type="date" name="date3" placeholder="Date3", value="{projects.date3}"><br>
+       <input name="projectName" placeholder="Project Name", value="{projects.projectName}"><br>
+       <input name="projectNo" placeholder="ProjectNo", value="{projects.projectNo}"><br>
+       <input type="date" name="startDate" placeholder="StartDate", value="{projects.startDate}"><br>
+       <input type="date" name="endDate" placeholder="EndDate", value="{projects.endDate}"><br>
+       <input name="releases" placeholder="Releases", value="{projects.releases}"><br>
+        <input name="sprintDuration" placeholder="Duration", value="{projects.sprintDuration}"><br>
+
 
          <input type="submit" value="Update">
          <input type="hidden" name="_csrf" value="{_csrf}">

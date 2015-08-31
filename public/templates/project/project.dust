@@ -11,20 +11,23 @@
                 <legend>Add a new Project</legend>
                 <form method="POST" action="/project">
 
-                    <label for="projectname">ProjectName: </label>
-                    <input name="projectname" placeholder="Project Name"><br>
+                    <label for="projectName">ProjectName: </label>
+                    <input name="projectName" placeholder="Project Name"><br>
 
-                    <label for="projectno">ProjectNo: </label>
-                    <input name="projectno" placeholder="Project No"><br>
+                    <label for="projectNo">ProjectNo: </label>
+                    <input name="projectNo" placeholder="Project No"><br>
 
-                    <label for="release1">Release1: </label>
-                    <input type="date" name="date1" placeholder="Release1"><br>
+                    <label for="startDate">StartDate: </label>
+                    <input type="date" name="startDate" placeholder="StartDate"><br>
 
-                       <label for="release2">Release2: </label>
-                    <input type="date" name="date2" placeholder="Release2"><br>
+                        <label for="endDate">EndDate: </label>
+                        <input type="date" name="endDate" placeholder="EndDate"><br>
 
-                     <label for="release3">Release3: </label>
-                    <input type="date" name="date3" placeholder="Release3"><br>
+                       <label for="releases">Releases: </label>
+                    <input name="releases" placeholder="Releases"><br>
+
+                     <label for="sprintDuration">Sprint Duration: </label>
+                    <input name="sprintDuration" placeholder="weeks"><br>
 
                     <input type="hidden" name="_csrf" value="{_csrf}">
                     <input type="submit" value="Save">
@@ -42,7 +45,7 @@
                                 <form method="POST" action="/project">
                                     <input type="hidden" name="item_id" value="{.id}">
 
-                                    <h3 class="nm-np"><a href='/project/{.id}'>{.projectname}</h3>
+                                    <h3 class="nm-np"><a href='/project/{.id}'>{.projectName}</h3>
 
 
 

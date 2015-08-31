@@ -20,6 +20,7 @@
        <input name="creator" placeholder="Creator", value="{creator}"><br>
        <input type="date" name="date" placeholder="Date", value="{date}"><br>
        <input name="desc" placeholder="Description", value="{desc}"><br>
+       <input name="sprintNo" placeholder="SprintNo", value="{sprintNo}"><br>
 
          <input type="submit" value="Update">
          <input type="hidden" name="_csrf" value="{_csrf}">

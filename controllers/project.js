@@ -32,19 +32,22 @@ module.exports = function (server) {
      * **** PLEASE READ THE COMMENT BELOW! ****
      */
     server.post('/project', function (req, res) {
-        var projectname = req.body.projectname && req.body.projectname.trim();
-        var projectno = req.body.projectno && req.body.projectno.trim();
-        var date1 = req.body.date1 && req.body.date1.trim();
-        var date2 = req.body.date2 && req.body.date2.trim();
-        var date3 = req.body.date3 && req.body.date3.trim();
+        var projectName = req.body.projectName && req.body.projectName.trim();
+        var projectNo = req.body.projectNo && req.body.projectNo.trim();
+        var startDate = req.body.startDate && req.body.startDate.trim();
+        var endDate = req.body.endDate && req.body.endDate.trim();
+        var releases = req.body.releases && req.body.releases.trim();
+        var sprintDuration = req.body.sprintDuration && req.body.sprintDuration.trim();
+        var sprintCount = Math.floor((Math.floor((new Date(endDate) - new Date(startDate)) / (24 * 3600 * 1000 * 7))) / sprintDuration);
 
 
-        if (projectname === '') {
+
+        if (projectName === '') {
             res.redirect('/project#BadInput');
             return;
         }
 
-        var newProject = new Project({projectname: projectname,projectno: projectno,date1: date1,date2: date2,date3: date3});
+        var newProject = new Project({projectName: projectName,projectNo: projectNo,startDate: startDate,endDate: endDate,releases: releases,sprintDuration: sprintDuration,sprintCount: sprintCount});
 
         //Show it in console for educational purposes...
         newProject.whatAmI();
@@ -100,11 +103,12 @@ editing project details
  */
     server.put('/project/:id',function(req,res){
         Project.update({_id: req.params.id}, {
-                projectname:req.body.projectname,
-                projectno:req.body.projectno,
-                date1:req.body.date1,
-                date2:req.body.date2,
-                date3:req.body.date3
+                projectName:req.body.projectName,
+                projectNo:req.body.projectNo,
+                startDate:req.body.startDate,
+                endDate:req.body.endDate,
+                releases:req.body.releases,
+                sprintDuration:req.body.sprintDuration
 
             },
             function(err,docs) {
@@ -158,8 +162,8 @@ Story Main page
                name: req.body.name,
                creator: req.body.creator,
                date: req.body.date,
-               desc: req.body.desc
-
+               desc: req.body.desc,
+               sprintNo: req.body.sprintNo
 
            }}},
            function(err,docs) {
@@ -197,7 +201,9 @@ Story updating
                 "story.$.name":req.body.name,
                 "story.$.creator":req.body.creator,
                 "story.$.date":req.body.date,
-                "story.$.desc":req.body.desc
+                "story.$.desc":req.body.desc,
+                "story.$.sprintNo":req.body.sprintNo
+
             }},
             function(err,docs) {
                 if (err)
@@ -228,7 +234,7 @@ Story updating
     /* Search story by name */
     server.post('/:id/story/search/name',function(req,res){
 
-        Project.find({_id: req.params.id,'story.name':req.body.storyname},{_id:0,"story.$":1},
+        Project.find({_id: req.params.id,'story.name':req.body.storyName},{_id:0,"story.$":1},
             function (err,docs) {
                 if (err) {
                     res.json(err);
@@ -244,7 +250,7 @@ Story updating
 
     server.post('/:id/story/search/date',function(req,res){
 
-        Project.find({_id: req.params.id,'story.date':req.body.releasedate},{_id:0,"story.$":1},
+        Project.find({_id: req.params.id,'story.date':req.body.releaseDate},{_id:0,"story.$":1},
             function (err,docs) {
                 if (err) {
                     res.json(err);
@@ -281,7 +287,9 @@ Story updating
                 name: req.body.name,
                 creator: req.body.creator,
                 date: req.body.date,
-                desc: req.body.desc
+                desc: req.body.desc,
+                sprintNo: req.body.sprintNo
+
 
 
             }}},

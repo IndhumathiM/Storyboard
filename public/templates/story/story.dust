@@ -16,6 +16,7 @@
                     <input name="creator" placeholder="Creator"><br>
                     <input type="date" name="date" placeholder="Creation Date"><br>
                     <input name="desc" placeholder="Description"><br>
+                   <input name="sprintNo" placeholder="SprintNo"><br>
 
                     <input type="hidden" name="_csrf" value="{_csrf}">
                     <input type="submit" value="Save">
@@ -35,10 +36,16 @@
 
                                            <input type="hidden" name="_method" value="POST">
 
-                                    <h3 class="nm-np">{name}</h3>
-                                     <h3 class="nm-np">{creator}</h3>
-                                     <h3 class="nm-np">{date}</h3>
-                                       <h3 class="nm-np">{desc}</h3>
+                                    <ul>
+                                    <li> name: {name} </li>
+                                    <li> creator: {creator}  </li>
+                                    <li> creation date: {date}  </li>
+                                    <li> desc: {desc}  </li>
+                                    <li> sprintNo: {sprintNo}  </li>
+                                    <li> sprintStartDate: {sprintStartDate}  </li>
+                                    <li> sprintEndDate: {sprintEndDate}  </li>
+
+                                    </ul>
 
 
 

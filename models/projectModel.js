@@ -6,17 +6,24 @@ var projectModel = function () {
 
     //Define a super simple schema for our stories.
     var projectSchema = mongoose.Schema({
-        projectname: String,
-        projectno: String,
-        assignedteam: String,
-        date1: String,
-        date2: String,
-        date3: String,
+        projectName: String,
+        projectNo: String,
+        startDate: String,
+        endDate: String,
+        releases:String,
+        sprintDuration:String,
+        sprintCount:String,
         story:[{
         name: String,
         creator: String,
         date: String,
-        desc:String}]
+        desc:String,
+            sprintNo: String,
+            sprintStartDate: String,
+            sprintEndDate: String
+
+
+        }]
     });
 
     /**
